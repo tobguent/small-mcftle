@@ -1,0 +1,48 @@
+
+###########################################################################
+## MCFTLE: Monte Carlo Rendering of Finite-Time Lyapunov Exponent Fields ##
+###########################################################################
+
+
+This folder contains a (minimal) cross-platform implementation of MCFTLE.
+
+========================
+== CPU implementation ==
+========================
+
+Requirements:
+- C++ 11                 (tested on Microsoft Visual Studio 2012, Visual Studio 2015, GCC 4.8 and GCC 5)
+- CMake                  (tested with CMake 3.4.1)
+
+Tested on:
+- Windows 7
+- Windows 8.1
+- Ubuntu 14.04 LTS
+
+
+Please be patient. A single iteration might take a few minutes (31 seconds on our testing machine).
+Intermediate results are written as bmp files to the build folder.
+This implementation is not optimized and does not contain an acceleration data structure.
+The source code is kept simple and is meant for educational purposes only.
+
+
+========================
+== GPU implementation ==
+========================
+
+Requirements:
+- C++ 11                 (tested on Microsoft Visual Studio 2012)
+- CMake                  (tested with CMake 3.4.1)
+- Windows 7, DirectX 11
+
+
+The GPU implementation dispatches a compute shader that has a potentially long execution time (about 1 second on our testing machine).
+In fact, the Windows Timeout Detection and Recovery (TDR) might think that the system hangs and reset the graphics driver.
+To prevent this from happening, the following registry flag can be set:
+
+KeyPath   : HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\GraphicsDrivers
+KeyValue  : TdrLevel
+ValueType : REG_DWORD
+ValueData : 0				 # TdrLevelOff(0) = Detection disabled 
+
+Intermediate results are written as bmp and pfm files to the build folder.

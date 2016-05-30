@@ -1,0 +1,24 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
+
+PROJECT(small_mcftle_cpu CXX)
+
+IF(WIN32)
+  ADD_DEFINITIONS(-DNOMINMAX)
+ENDIF()
+
+FIND_PACKAGE(OpenMP)
+IF(OPENMP_FOUND)
+  MESSAGE(STATUS "Using OpenMP parallelization")
+  SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+  SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+ELSE()
+  MESSAGE(STATUS "Not using OpenMP parallelization")
+ENDIF()
+
+IF("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ENDIF()
+
+set(SOURCES main.cpp camera.hpp flow.hpp frame.hpp math.hpp timer.hpp)
+add_executable(small_mcftle_cpu ${SOURCES})
