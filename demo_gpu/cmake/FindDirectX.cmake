@@ -67,6 +67,38 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
 			set (DirectX_LIB_SEARCH_PATH "${WIN8_SDK_ROOT_DIR}/Lib/10.0.10586.0/um/${DirectX_ARCHITECTURE}")
 			set (DirectX_BIN_SEARCH_PATH "${WIN8_SDK_ROOT_DIR}/bin/x86")
 		endif ()
+		
+		find_path (WIN8_SDK_ROOT_DIR
+			Include/10.0.14393.0/um/windows.h
+			PATHS
+				"$ENV{${PROGWIN64}}/Windows Kits/8.0"
+				"$ENV{${PROGWIN32}}/Windows Kits/8.0"
+				"$ENV{${PROGWIN64}}/Windows Kits/10"
+				"$ENV{${PROGWIN32}}/Windows Kits/10"
+				DOC "Windows 8 SDK root directory"
+		)
+
+		if (WIN8_SDK_ROOT_DIR)
+			set (DirectX_INC_SEARCH_PATH "${WIN8_SDK_ROOT_DIR}/Include/10.0.14393.0/um" "${WIN8_SDK_ROOT_DIR}/Include/shared")
+			set (DirectX_LIB_SEARCH_PATH "${WIN8_SDK_ROOT_DIR}/Lib/10.0.14393.0/um/${DirectX_ARCHITECTURE}")
+			set (DirectX_BIN_SEARCH_PATH "${WIN8_SDK_ROOT_DIR}/bin/x86")
+		endif ()
+		
+		find_path (WIN8_SDK_ROOT_DIR
+			Include/10.0.16299.0/um/windows.h
+			PATHS
+				"$ENV{${PROGWIN64}}/Windows Kits/8.0"
+				"$ENV{${PROGWIN32}}/Windows Kits/8.0"
+				"$ENV{${PROGWIN64}}/Windows Kits/10"
+				"$ENV{${PROGWIN32}}/Windows Kits/10"
+				DOC "Windows 8 SDK root directory"
+		)
+
+		if (WIN8_SDK_ROOT_DIR)
+			set (DirectX_INC_SEARCH_PATH "${WIN8_SDK_ROOT_DIR}/Include/10.0.16299.0/um" "${WIN8_SDK_ROOT_DIR}/Include/shared")
+			set (DirectX_LIB_SEARCH_PATH "${WIN8_SDK_ROOT_DIR}/Lib/10.0.16299.0/um/${DirectX_ARCHITECTURE}")
+			set (DirectX_BIN_SEARCH_PATH "${WIN8_SDK_ROOT_DIR}/bin/10.0.16299.0/x86")
+		endif ()
 	endif ()
 
 
