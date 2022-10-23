@@ -11,13 +11,11 @@ This folder contains a (minimal) cross-platform implementation of MCFTLE.
 ========================
 
 Requirements:
-- C++ 11                 (tested on Microsoft Visual Studio 2012, Visual Studio 2015, Visual Studio 2017, GCC 4.8 and GCC 5)
-- CMake                  (tested with CMake 3.4.1)
+- C++ 11                 (tested on Microsoft Visual Studio 2022, GCC 4.8 and GCC 5)
+- CMake                  (tested with CMake 3.24.2)
 
 Tested on:
-- Windows 7
-- Windows 8.1
-- Windows 10
+- Windows 11
 - Ubuntu 14.04 LTS
 
 
@@ -32,10 +30,9 @@ The source code is kept simple and is meant for educational purposes only.
 ========================
 
 Requirements:
-- C++ 11                             (tested on Microsoft Visual Studio 2012 and 2017)
-- CMake                              (tested with CMake 3.4.1)
-- Windows 7, DirectX SDK (June 2010) 
-- Windows 10, Windows 10 SDK         (tested for Fall Creatores Update 10.0.16299.x)
+- C++ 11                             (tested on Microsoft Visual Studio 2022)
+- CMake                              (tested with CMake 3.24.2)
+- Windows SDK         				 (tested for 10.0.19041.0)
 
 
 The GPU implementation dispatches a compute shader that has a potentially long execution time (about 1 second on our testing machine).
